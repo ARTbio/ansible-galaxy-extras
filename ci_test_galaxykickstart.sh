@@ -16,6 +16,7 @@ sudo apt-get -y --purge remove postgresql libpq-dev libpq5 postgresql-client-com
 sudo rm -rf /var/lib/postgresql
 
 git clone http://github.com/artbio/galaxykickstart $HOME/galaxykickstart
+pip install ansible==2.7.4
 ansible-galaxy install -r $HOME/galaxykickstart/upstream_requirements_roles.yml \
   -p $HOME/galaxykickstart/roles -f
 # remove ansible-galaxy-extras for testing
@@ -23,7 +24,6 @@ rm -rf $HOME/galaxykickstart/roles/galaxyprojectdotorg.galaxy-extras/*
 cp -r ./* $HOME/galaxykickstart/roles/galaxyprojectdotorg.galaxy-extras/
 
 # install and update galaxykickstart with ansible
-pip install ansible==2.7.4
 ansible-playbook -i $HOME/galaxykickstart/inventory_files/galaxy-kickstart $HOME/galaxykickstart/galaxy.yml
 
 sudo supervisorctl status
