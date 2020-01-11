@@ -23,7 +23,7 @@ rm -rf $HOME/galaxykickstart/roles/galaxyprojectdotorg.galaxy-extras/*
 cp -r ./* $HOME/galaxykickstart/roles/galaxyprojectdotorg.galaxy-extras/
 
 # install and update galaxykickstart with ansible
-ansible-playbook -i $HOME/galaxykickstart/inventory_files/galaxy-kickstart $HOME/galaxykickstart/galaxy.yml
+pip install ansible==2.7.4
 ansible-playbook -i $HOME/galaxykickstart/inventory_files/galaxy-kickstart $HOME/galaxykickstart/galaxy.yml
 
 sudo supervisorctl status
